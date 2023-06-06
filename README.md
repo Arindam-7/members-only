@@ -1,0 +1,14 @@
+- [x] Setup database
+- [x] Define models
+- [ ] Create a sign-up form
+  - [ ] Sanitize
+  - [ ] Validate
+  - [ ] Secure password
+  - [ ] Confirm password
+- [ ] Subscription using secret code
+- [ ] Create Log-in form
+- [ ] Form to create a new message
+- [ ] Display all member messages on homepage
+- [ ] Only subscribed users can see the author and date of messages
+- [ ] Admin
+- [ ] Deploy
