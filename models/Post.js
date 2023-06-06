@@ -1,14 +1,18 @@
-const mongoose = require('mongoose')
+const { model, Schema } = require('mongoose')
 
-const PostSchema = new mongoose.Schema({
-    title: String,
-    content: String,
-    author: String,
+const PostSchema = new Schema({
+    title: { type: String, required: true, minlength: 3, maxlength: 70 },
+    content: { type: String, required: false, maxlength: 500 },
+    author: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
     createdAt: Date,
     updatedAt: Date,
-    url: String
+    url: String,
 })
 
-const Post = mongoose.model('Post', PostSchema)
+PostSchema.virtual('url').get(function () {
+    return '/posts/' + this._id
+})
+
+const Post = model('Post', PostSchema)
 
 module.exports = Post
