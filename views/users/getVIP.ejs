@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/getVIP.css" />
+
+    <%- include('../layout/favicon') %>
+
+    <title>Consiga acesso VIP - PostHere!</title>
+  </head>
+  <body>
+    <%- include('../layout/header') %>
+
+    <main>
+      <div class="container">
+        <div class="card">
+          <form action="" method="post">
+            <h2>Consiga acesso VIP</h2>
+            <div class="form-group">
+              <label for="accessCode">Código de acesso:</label>
+              <%-include('../layout/fieldErrors', {fieldName: 'accessCode' })%>
+              <input
+                type="password"
+                name="accessCode"
+                id="accessCode"
+                minlength="8"
+                required
+                value="<%= locals.formData ? formData.accessCode : null%>"
+              />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../layout/footer') %>
+  </body>
+</html>

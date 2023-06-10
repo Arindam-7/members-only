@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+
+    <%- include('../layout/favicon') %>
+
+    <title>Register</title>
+  </head>
+  <body>
+    <%- include('../layout/header') %>
+
+    <main>
+      <div class="container">
+        <div class="auth-card">
+          <img src="/img/signup-image.jpg" alt="" />
+          <div class="form-area">
+            <h2>Sign up and share your thoughts</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+              <%- include('../layout/messages', messages=locals.messages ?? []) %>
+              <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'firstName' })%>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                  value="<%= locals.formData ? formData.firstName : null%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Surname:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'lastName' })%>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                  value="<%= locals.formData ? formData.lastName : null%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'username' })%>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  minlength="5"
+                  maxlength="30"
+                  required
+                  value="<%= locals.formData ? formData.username : null%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'password' })%>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  minlength="8"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password2">Confirm Password:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'password2' })%>
+                <input
+                  type="password"
+                  name="password2"
+                  id="password2"
+                  minlength="8"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="profileImage">Profile Picture:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'profileImage' })%>
+                <div class="file-input">
+                  <img
+                    src="<%= locals.formData ? formData.profileImage || '/img/users/profile/default.jpg' : '/img/users/profile/default.jpg'%>"
+                    alt="" />
+                  <input type="file" name="profileImage" id="profileImage">
+                </div>
+              </div>
+              <button type="submit">Criar conta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../layout/footer') %>
+  </body>
+</html>

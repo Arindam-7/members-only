@@ -1,0 +1,6 @@
+<% if (locals.errors) { %>
+    <% errors.filter(e => e.param===fieldName).forEach(function (err) { %>
+      <p class="field-message field-error"><%=err.msg%></p>
+  <% }); %>
+  <% } %>
+  

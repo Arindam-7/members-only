@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/posts.css" />
+
+    <%- include('../layout/favicon') %>
+
+    <title>Todas as postagens - PostHere!</title>
+  </head>
+  <body>
+    <%- include('../layout/header') %>
+
+    <main id="top">
+      <div class="container">
+        <% if (user) { %>    
+          <div class="new-post">
+            <h2>Novo post</h2>
+            <form action="/posts/new" method="post">
+              <div class="form-group">
+                <label for="title">Título:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'title' })%>
+                <input
+                type="text"
+                name="title"
+                id="title"
+                required
+                minlength="3"
+                maxlength="70"
+                value="<%- locals.formData ? formData.title : null%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="content">Conteúdo:</label>
+                <%-include('../layout/fieldErrors', {fieldName: 'content' })%>
+                <textarea
+                name="content"
+                id="content"
+                rows="4"
+                maxlength="500"
+                ><%- locals.formData ? formData.content : null %></textarea>
+              </div>
+              <button type="submit">Postar</button>
+            </form>
+          </div>
+        <% } %>
+        <div class="feed">
+          <% if (user && !user.hasMembership) { %> 
+            <div class="card vip-banner">
+              <i class="bi bi-gem"></i>
+              <h2>Se torne VIP para revelar quem é o autor de cada post</h2>
+            </div>
+          <% } %>
+          <% if (posts.length) { %> 
+            <% posts.forEach(post => { %> 
+              <%- include('../layout/post', {post: post, showActions: true}) %>
+            <% }) %>
+          <% } else { %>
+            <h3 class="no-posts">Nenhum post encontrado</h3>
+          <% } %>
+        </div>
+      </div>
+
+      <a href="#top" title="Voltar ao topo" id="go-top" class="btn">
+        <i class="bi bi-arrow-up"></i>
+      </a>
+    </main>
+
+    <%- include('../layout/footer') %>
+  </body>
+</html>

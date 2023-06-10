@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+
+    <%- include('../layout/favicon') %>
+
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include('../layout/header') %>
+
+    <main>
+      <div class="container">
+        <div class="auth-card">
+          <img src="/img/login-image.jpg" alt="" />
+          <div class="form-area">
+            <h2>Login to see posts</h2>
+            <form action="" method="post">
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  minlength="5"
+                  maxlength="30"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  minlength="8"
+                  required
+                />
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../layout/footer') %>
+  </body>
+</html>
