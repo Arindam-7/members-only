@@ -19,14 +19,14 @@ exports.post_new_post = [
     .escape()
     .isLength({ min: 3, max: 70 })
     .withMessage(
-      'O título da postagem deve ter no mínimo 3 e no máximo 70 caracteres'
+      'Post title must be a minimum of 3 and a maximum of 70 characters'
     ),
 
   body('content')
     .optional()
     .trim()
     .isLength({ max: 500 })
-    .withMessage('O conteúdo da postagem deve ter no máximo 500 caracteres')
+    .withMessage('Post content must be a maximum of 500 characters')
     .escape(),
 
   async (req, res, next) => {
@@ -69,14 +69,14 @@ exports.get_remove_post = async (req, res, next) => {
       return res.render('errorPage', {
         error: {
           status: 403,
-          message: 'Você não tem permissões para excluir esse post',
+          message: `You don't have permissions to delete this post`,
         },
       });
     }
     return res.render('errorPage', {
       error: {
         status: 404,
-        message: 'O post que você está tentando apagar não existe',
+        message: `The post you are trying to delete does not exist.`,
       },
     });
   } catch (err) {
@@ -84,7 +84,7 @@ exports.get_remove_post = async (req, res, next) => {
   }
 };
 
-/** Remove um post */
+/** Remove a post */
 exports.post_remove_post = async (req, res, next) => {
   try {
     if (req.user?.isAdmin) {
@@ -94,7 +94,7 @@ exports.post_remove_post = async (req, res, next) => {
     return res.render('errorPage', {
       error: {
         status: 403,
-        message: 'Você não tem permissões para excluir esse post',
+        message: `You don't have permissions to delete this post`,
       },
     });
   } catch (err) {

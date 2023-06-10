@@ -11,7 +11,7 @@
 
     <%- include('../layout/favicon') %>
 
-    <title>Todas as postagens - PostHere!</title>
+    <title>Members Only</title>
   </head>
   <body>
     <%- include('../layout/header') %>
@@ -20,10 +20,10 @@
       <div class="container">
         <% if (user) { %>    
           <div class="new-post">
-            <h2>Novo post</h2>
+            <h2>New post</h2>
             <form action="/posts/new" method="post">
               <div class="form-group">
-                <label for="title">Título:</label>
+                <label for="title">Title:</label>
                 <%-include('../layout/fieldErrors', {fieldName: 'title' })%>
                 <input
                 type="text"
@@ -36,7 +36,7 @@
                 />
               </div>
               <div class="form-group">
-                <label for="content">Conteúdo:</label>
+                <label for="content">Contents:</label>
                 <%-include('../layout/fieldErrors', {fieldName: 'content' })%>
                 <textarea
                 name="content"
@@ -45,7 +45,7 @@
                 maxlength="500"
                 ><%- locals.formData ? formData.content : null %></textarea>
               </div>
-              <button type="submit">Postar</button>
+              <button type="submit">Submit</button>
             </form>
           </div>
         <% } %>
@@ -53,7 +53,7 @@
           <% if (user && !user.hasMembership) { %> 
             <div class="card vip-banner">
               <i class="bi bi-gem"></i>
-              <h2>Se torne VIP para revelar quem é o autor de cada post</h2>
+              <h2>Become a VIP to know who are the authors</h2>
             </div>
           <% } %>
           <% if (posts.length) { %> 
@@ -61,12 +61,12 @@
               <%- include('../layout/post', {post: post, showActions: true}) %>
             <% }) %>
           <% } else { %>
-            <h3 class="no-posts">Nenhum post encontrado</h3>
+            <h3 class="no-posts">No posts found</h3>
           <% } %>
         </div>
       </div>
 
-      <a href="#top" title="Voltar ao topo" id="go-top" class="btn">
+      <a href="#top" title="Take me back to the top" id="go-top" class="btn">
         <i class="bi bi-arrow-up"></i>
       </a>
     </main>

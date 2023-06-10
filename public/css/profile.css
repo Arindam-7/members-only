@@ -1,0 +1,61 @@
+main .container,
+.profile,
+.user-data {
+  display: flex;
+}
+
+main .container {
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.profile {
+  width: min(100%, 550px);
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-data {
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.user-data h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.membership.active {
+  background-color: var(--color-vip);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.edit-profile {
+  position: fixed;
+  bottom: 64px;
+  right: 16px;
+  border-radius: 50%;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+    flex-direction: row;
+  }
+
+  .user-data {
+    align-items: flex-start;
+  }
+}

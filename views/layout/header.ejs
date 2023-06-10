@@ -1,7 +1,7 @@
 <header>
     <div class="container">
       <h1>
-        <a href="/">PostHere!</a>
+        <a href="/">Members Only</a>
       </h1>
   
       <nav>
@@ -9,24 +9,24 @@
           <% if (locals.user) { %>
             <% if (!user.hasMembership) {%>
               <li>
-                <a href="/users/vip" title="Se torne VIP">
+                <a href="/users/vip" title="If VIP">
                   <i class="bi bi-gem"></i>
                 </a>
               </li>
             <% } %>
             <li>
-              <a href="/users/<%=user.username%>" title="Seu perfil">
+              <a href="/users/<%=user.username%>" title="Your Profile">
                 <img src="<%= user.profileImage || '/img/users/profile/default.jpg' %>" alt="">
               </a>
             </li>
             <li>
-              <a href="/logout" title="Sair">
+              <a href="/logout" title="Log Out">
                 <i class="bi bi-box-arrow-right"></i>
               </a>
             </li>
           <% } else { %>
-            <li><a href="/login">Entrar</a></li>
-            <li><a href="/signup">Cadastrar-se</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Register</a></li>
           <% } %>
         </ul>
       </nav>

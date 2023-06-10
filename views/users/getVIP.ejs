@@ -11,7 +11,7 @@
 
     <%- include('../layout/favicon') %>
 
-    <title>Consiga acesso VIP - PostHere!</title>
+    <title>Get VIP - Members Only</title>
   </head>
   <body>
     <%- include('../layout/header') %>
@@ -20,9 +20,9 @@
       <div class="container">
         <div class="card">
           <form action="" method="post">
-            <h2>Consiga acesso VIP</h2>
+            <h2>Get VIP Access</h2>
             <div class="form-group">
-              <label for="accessCode">Código de acesso:</label>
+              <label for="accessCode">Get VIP access:</label>
               <%-include('../layout/fieldErrors', {fieldName: 'accessCode' })%>
               <input
                 type="password"
@@ -33,7 +33,7 @@
                 value="<%= locals.formData ? formData.accessCode : null%>"
               />
             </div>
-            <button type="submit">Enviar</button>
+            <button type="submit">Submit</button>
           </form>
         </div>
       </div>

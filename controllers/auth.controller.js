@@ -29,7 +29,7 @@ module.exports.get_logout = async (req, res, next) => {
 module.exports.post_login = passport.authenticate('local', {
   failureRedirect: '/login',
   successRedirect: '/posts',
-  failureMessage: 'Username ou senha incorretos',
+  failureMessage: 'Incorrect username or password',
 });
 
 module.exports.post_signup = [
@@ -39,28 +39,28 @@ module.exports.post_signup = [
     .trim()
     .escape()
     .isLength({ min: 2, max: 30 })
-    .withMessage('O nome deve ter de 2 a 30 carcteres'),
+    .withMessage('Name must be 2 to 30 characters long'),
 
   body('lastName')
     .trim()
     .escape()
     .isLength({ min: 2, max: 30 })
-    .withMessage('O sobrenome deve ter de 2 a 30 carcteres'),
+    .withMessage('Last name must be 2 to 30 characters long'),
 
   body('username')
     .trim()
     .escape()
     .isLength({ min: 5, max: 30 })
-    .withMessage('O username deve ter de 5 a 30 carcteres'),
+    .withMessage('Username must be between 5 to 30 characters'),
 
   body('password')
     .escape()
     .isStrongPassword()
     .withMessage(
-      'Sua senha deve ter pelo menos 8 caracteres e deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um símbolo'
+      'Your password must be at least 8 characters long and must contain at least one uppercase letter, one lowercase letter, one number and one symbol'
     )
     .custom((value, { req }) => value === req.body['password2'])
-    .withMessage('As senhas não são iguais'),
+    .withMessage('Passwords are not the same'),
 
   async (req, res, next) => {
     try {
@@ -71,7 +71,7 @@ module.exports.post_signup = [
       if (user)
         errorsArray.push({
           value: req.body.username,
-          msg: 'Esse nome de usuário já está em uso',
+          msg: 'This username is already in use',
           param: 'username',
           location: 'body',
         });
@@ -91,14 +91,14 @@ module.exports.post_signup = [
         password: hashedPassword,
       });
 
-      if (req.file) {
-        newUser.profileImage = generateProfilePicPath(req.file);
-      }
+      // if (req.file) {
+      //   newUser.profileImage = generateProfilePicPath(req.file);
+      // }
 
       await newUser.save();
 
       return res.render('auth/signup', {
-        messages: ['Conta criada com sucesso, você já pode realizar login'],
+        messages: ['Account created successfully!'],
       });
     } catch (err) {
       return next(err);

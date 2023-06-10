@@ -61,7 +61,7 @@ exports.post_grant_user_VIP_access = [
     .custom((value) => {
       return value === process.env.VIP_CODE;
     })
-    .withMessage('Código incorreto'),
+    .withMessage('Code Incorrect!'),
 
   async (req, res, next) => {
     const errors = validationResult(req);
@@ -90,20 +90,20 @@ exports.post_user_profile_edit = [
     .trim()
     .escape()
     .isLength({ min: 2, max: 30 })
-    .withMessage('O nome deve ter de 2 a 30 carcteres'),
+    .withMessage('First name must be 2 to 30 characters long'),
 
   body('lastName')
     .trim()
     .escape()
     .isLength({ min: 2, max: 30 })
-    .withMessage('O sobrenome deve ter de 2 a 30 carcteres'),
+    .withMessage('Surname must be 2 to 30 characters long'),
 
   async (req, res, next) => {
     if (req.params.username !== req.user.username) {
       return res.render('errorPage', {
         error: {
           status: 403,
-          message: 'Você não tem permissões para editar esse usuário',
+          message: `You don't have permission to edit this user`,
         },
       });
     }
