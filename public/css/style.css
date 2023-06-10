@@ -1,13 +1,14 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
 /* Bootstrap icons */
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
 
 :root {
   font-size: 16px;
-
-  --color-bg: #e8e9eb;
-  --color-primary: #294d4a;
+  --color-bg: #C1CFC0;
+  --color-primary: #11324D;
   --color-primary-alt: #445552;
   --color-membership: #e4b363;
   --color-text: #000;
@@ -29,8 +30,9 @@ select,
 option,
 label,
 button {
-  font-family: 'Mulish', sans-serif;
-  font-size: 1rem;
+    /* font-family: 'PT Sans', sans-serif; */
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1rem;
 }
 
 body {
