@@ -1,3 +1,5 @@
+[Demo](https://members-only-node.vercel.app/)
+
 > Use the code 'vip123456' to be a VIP
 
 
@@ -14,4 +16,4 @@
 - [x] Display all member messages on homepage
 - [x] Only subscribed users can see the author and date of messages
 - [x] Admin
-- [ ] Deploy
+- [x] Deploy
