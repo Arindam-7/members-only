@@ -1,3 +1,6 @@
+> Use the code 'vip123456' to be a VIP
+
+
 - [x] Setup database
 - [x] Define models
 - [x] Create a sign-up form
